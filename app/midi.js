@@ -11,6 +11,7 @@ CC.midi = function() {
 		navigator.requestMIDIAccess().then(onMIDIInit, onMIDIReject);
 		console.log("%cMIDI Initialized!", 'color: green');
 	} else {
+		console.log("%cMIDI Initalization Failed", "color: orange");
 		this.func.error("No MIDI support present in your browser.");
 	}
 

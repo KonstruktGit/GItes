@@ -16,4 +16,12 @@ CC.recorder = function() {
 		}
 		notes_pressed.splice(notes_pressed.indexOf(data.noteNumber), 1);
 	});
+
+	this.func.onEvent("startRecording", function(data) {
+		recording = true;
+	});
+
+	this.func.onEvent("stopRecording", function(data) {
+		recording = false;
+	});
 };
