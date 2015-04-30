@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="Concert Creator" default="initialize" basedir=".">
+
+	<target name="get_properties">
+		<property file="ant.properties" />
+		<echo>Imported Properties</echo>
+	</target>
+
+	<target name="concat_css">
+		<concat destfile="${app_dir}/style.css">
+			<filelist id="files" dir="${css_dir}">
+				<file name="main.css" />
+			</filelist>
+		</concat>
+	</target>
+
+	<target name="concat_js">
+		<concat destfile="${app_dir}/script.js">
+			<filelist id="files" dir="${js_dir}">
+				<file name="app.js" />
+				<file name="midi.js" />
+				<file name="recorder.js" />
+				<file name="ui.js" />
+				<file name="init.js" />
+			</filelist>
+		</concat>
+	</target>
+
+	<target name="compress">
+		<java jar="bin/yuicompressor-2.4.7.jar" fork="true">
+			<arg value="${file}" />
+			<arg value="-o" />
+			<arg value="${file}" />
+		</java>
+		<echo>${file}</echo>
+	</target>
+
+	<target name="compress_css" depends="concat_css">
+		<antcall target="compress">
+			<param name="file" value="${app_dir}/style.css" />
+		</antcall>
+	</target>
+
+	<target name="compress_js" depends="concat_js">
+		<antcall target="compress">
+			<param name="file" value="${app_dir}/script.js" />
+		</antcall>
+	</target>
+
+	<target name="clean_up" depends="get_properties">
+		<delete dir="${app_dir}" />
+	</target>
+
+	<target name="initialize" depends="get_properties,clean_up">
+		<mkdir dir="${app_dir}" />
+		<antcall target="compress_css" />
+		<antcall target="compress_js" />
+		<echo>Done!</echo>
+	</target>
+
+</project>

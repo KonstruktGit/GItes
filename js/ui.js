@@ -18,8 +18,28 @@ CC.ui = function() {
 			}
 		};
 
-	_this.func.onEvent('cc-error', function(data) {
+	this.func.onEvent('cc-error', function(data) {
 		$("#cc-alerts").append(modules.alert(data.msg, "danger", true));
+	});
+
+	$(document).on('click', '#cc-recordBtn', function(event) {
+		event.preventDefault();
+		_this.func.triggerEvent('startRecording');
+		$(this).addClass('hidden');
+		$("#cc-stopRecordBtn").removeClass('hidden');
+	});
+
+	$(document).on('click', '#cc-stopRecordBtn', function(event) {
+		event.preventDefault();
+		_this.func.triggerEvent('stopRecording');
+		$(this).addClass('hidden');
+		$("#cc-recordBtn").removeClass('hidden');
+	});
+
+	/** Load Song **/
+	$(document).on('click', '#cc-loadSongBtn', function(event) {
+		event.preventDefault();
+		_this.func.triggerEvent('loadSong');
 	});
 
 };
