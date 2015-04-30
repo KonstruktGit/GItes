@@ -18,9 +18,9 @@
 		<concat destfile="${app_dir}/script.js">
 			<filelist id="files" dir="${js_dir}">
 				<file name="app.js" />
-				<file name="midi.js" />
-				<file name="recorder.js" />
-				<file name="ui.js" />
+			</filelist>
+			<fileset dir="${js_dir}" includes="**/*.js" excludes="init.js,app.js" />
+			<filelist id="files" dir="${js_dir}">
 				<file name="init.js" />
 			</filelist>
 		</concat>
@@ -36,15 +36,15 @@
 	</target>
 
 	<target name="compress_css" depends="concat_css">
-		<antcall target="compress">
+		<!-- <antcall target="compress">
 			<param name="file" value="${app_dir}/style.css" />
-		</antcall>
+		</antcall> -->
 	</target>
 
 	<target name="compress_js" depends="concat_js">
-		<antcall target="compress">
+		<!-- <antcall target="compress">
 			<param name="file" value="${app_dir}/script.js" />
-		</antcall>
+		</antcall> -->
 	</target>
 
 	<target name="clean_up" depends="get_properties">
