@@ -36,6 +36,15 @@ CC.ui = function() {
 		$("#cc-recordBtn").removeClass('hidden');
 	});
 
+	/** Recording UI **/
+	this.func.onEvent("startRecording", function(data) {
+		$(".cc-project").addClass("cc-recording");
+	});
+
+	this.func.onEvent("stopRecording", function(data) {
+		$(".cc-project").removeClass("cc-recording");
+	});
+
 	/** Load Song **/
 	$(document).on('click', '#cc-loadSongBtn', function(event) {
 		event.preventDefault();

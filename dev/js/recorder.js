@@ -18,7 +18,7 @@ CC.recorder = function() {
 	});
 
 	this.func.onEvent("startRecording", function(data) {
-		console.log("Recording Started...")
+		console.log("Recording Started...");
 		_this.registry.recording = true;
 	});
 

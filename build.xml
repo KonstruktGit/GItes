@@ -8,14 +8,17 @@
 
 	<target name="concat_css">
 		<concat destfile="${app_dir}/style.css">
-			<filelist id="files" dir="${css_dir}">
-				<file name="main.css" />
-			</filelist>
+			<fileset dir="${lib_dir}" includes="**/*.css" />
+			<fileset dir="${css_dir}" includes="**/*.css" />
 		</concat>
 	</target>
 
 	<target name="concat_js">
 		<concat destfile="${app_dir}/script.js">
+			<filelist id="files" dir="${lib_dir}">
+				<file name="jquery-2.1.3.js" />
+			</filelist>
+			<fileset dir="${lib_dir}" includes="**/*.js" excludes="jquery-2.1.3.js" />
 			<filelist id="files" dir="${js_dir}">
 				<file name="app.js" />
 			</filelist>
@@ -34,6 +37,8 @@
 		</java>
 		<echo>${file}</echo>
 	</target>
+
+	<!-- UNCOMMENT LINES BELOW TO ENABLE COMPRESSION -->
 
 	<target name="compress_css" depends="concat_css">
 		<!-- <antcall target="compress">

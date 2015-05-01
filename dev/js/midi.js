@@ -21,6 +21,7 @@ CC.midi = function() {
 		var haveAtLeastOneDevice = false;
 		var inputs = midiAccess.inputs.values();
 		for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
+			console.log(input.value);
 			input.value.onmidimessage = MIDIMessageEventHandler;
 			haveAtLeastOneDevice = true;
 		}

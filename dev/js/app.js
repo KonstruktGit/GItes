@@ -6,6 +6,7 @@ var CC = {
 			_this.ui(); // initialize UI interaction
 			_this.midi(); // initialize MIDI listener
 			_this.recorder(); // initialize Recording System
+			_this.loader(); // initialize Song Loader
 		});
 	},
 	func: (function() {
