@@ -4,6 +4,8 @@ Have you ever wanted to have the cool interactive lightshows, pyrotechnics, or p
 
 Enter Concert Creator - the stage crew in a box
 
+Won 1st place at Hack Kean!
+
 ---
 
 This code uses Node.JS as the server base, so after cloning be sure to use
